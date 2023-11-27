@@ -22,7 +22,7 @@ int check_cycle(listint_t *list)
 			ret = 1;
 			break;
 		}
-		else if (temp_node->next == NULL)
+		else if (!temp_node->next)
 		{
 			break;
 		}
