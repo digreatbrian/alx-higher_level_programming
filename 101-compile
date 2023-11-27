@@ -1,0 +1,2 @@
+#!/bin/bash
+echo -e "import py_compile\nfilename = '$PYFILE'.split('.')[0]\npy_compile.compile('$PYFILE', cfile = filename + '.pyc')" > temp.py && python temp.py  
