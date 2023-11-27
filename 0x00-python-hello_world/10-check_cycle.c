@@ -26,6 +26,10 @@ int check_cycle(listint_t *list)
 		{
 			break;
 		}
+		else if (!temp_node->next->next)
+		{
+			break;
+		}
 	}
 	return (ret);
 }
