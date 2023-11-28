@@ -4,4 +4,3 @@ for number in range(100):
 		print(f"{number:02d}", end = ', ')
 	else:
 		print("%d\n" % number)
-		
