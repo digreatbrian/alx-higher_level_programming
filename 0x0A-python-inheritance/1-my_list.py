@@ -3,6 +3,7 @@
 The MyList class
 """
 
+
 class MyList(list):
     """A subclass of list"""
     def __init__(self):

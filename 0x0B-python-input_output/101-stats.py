@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-"""Reads from standard input and computes metrics
+"""Reads from standard input and computes some metrics
 
-After every ten lines or the input of a keyboard interruption (CTRL + C),
+On every ten lines or the input of a keyboard interruption [CTRL + C],
 prints the following statistics:
     - Total file size up to that point
     - Count of read status codes up to that point
@@ -9,7 +9,7 @@ prints the following statistics:
 
 
 def print_stats(size, status_codes):
-    """Print accumulated metrics.
+    """Print accumulated metrics
 
     Args:
         size (int): The accumulated read file size.
