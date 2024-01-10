@@ -10,7 +10,9 @@ for test_file in sorted(os.listdir(tests_dir)):
 	print('========================== ')
 	with open(os.path.join(tests_dir, test_file), 'r') as fd:
 		f = fd.read()
-		if test_number:
+		try:
 			exec(f)
+		except Exception as E:
+			print(E)
 	print(f"========= END TEST ========\n\n")
 	test_number += 1

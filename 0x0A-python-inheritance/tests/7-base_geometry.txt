@@ -1,0 +1,95 @@
+This modules defines a base geometry class BaseGeometry
+
+``BaseGeometry`` includes no attributes, and accordingly is initialized 
+with no arguments:
+    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+    >>> bg = BaseGeometry()
+    >>> type(bg)
+    <class '7-base_geometry.BaseGeometry'>
+
+Printing BaseGeometry object:
+    >>> print(bg)
+    <7-base_geometry.BaseGeometry object at ...>
+
+Any arguments supplied to an instantiation of `BaseGeometry` results
+in a TypeError:
+    >>> bg = BaseGeometry(None)
+    Traceback (most recent call last):
+    TypeError: object() takes no parameters
+
+
+Checking method `area`:
+    >>> bg = BaseGeometry()
+    >>> print(bg.area)
+    <bound method BaseGeometry.area of <7-base_geometry.BaseGeometry 
+     object at...>>
+
+Checking implementation of above method:
+    >>> bg.area()
+    Traceback (most recent call last):
+    Exception: area() is not implemented
+
+Checking method `integer_validator`:
+    >>> print(bg.integer_validator)
+    <bound method BaseGeometry.integer_validator of <7-base_geometry.BaseGeometry 
+    object at...>>
+
+Checking the method with an integer:
+   >>> bg.integer_validator("valid number", 1)
+
+Checking method with an invalid type:
+    >>> bg.integer_validator("invalid number", "number")
+    Traceback (most recent call last):
+    TypeError: invalid number must be an integer
+
+Checking again with another invalid type:
+    >>> bg.integer_validator("another invalid", True)
+    Traceback (most recent call last):
+    TypeError: another invalid must be an integer
+
+Again:
+    >>> bg.integer_validator("invalid tuple", (1,))
+    Traceback (most recent call last):
+    TypeError: invalid tuple must be an integer
+
+Again:
+    >>> bg.integer_validator("and another", [3])
+    Traceback (most recent call last):
+    TypeError: and another must be an integer
+
+More invalid checking:
+    >>> bg.integer_validator("more invalid testing", {3, 4})
+    Traceback (most recent call last):
+    TypeError: more invalid testing must be an integer
+
+Absolutely every invalid type:
+    >>> bg.integer_validator("absolutely every possible invalid", None)
+    Traceback (most recent call last):
+    TypeError: absolutely every possible invalid must be an integer
+
+Checking using an integer less than zero:
+    >>> bg.integer_validator("invalid int", -1)
+    Traceback (most recent call last):
+    ValueError: invalid int must be greater than 0
+
+Using zero instead:
+    >>> bg.integer_validator("invalid int", 0)
+    Traceback (most recent call last):
+    ValueError: invalid int must be greater than 0
+
+Checking method without any arguments:
+    >>> bg.integer_validator()
+    Traceback (most recent call last):
+    TypeError: integer_validator() missing 2 required positional arguments: 
+    'name' and 'value'
+
+Checking using one positional argument:
+    >>> bg.integer_validator(None)
+    Traceback (most recent call last):
+    TypeError: integer_validator() missing 1 required positional argument: 
+    'value'
+
+Checking using an invalid first argument:
+    >>> bg.integer_validator({"a": 1}, (1, 2))
+    Traceback (most recent call last):
+    TypeError: {'a': 1} must be an integer
