@@ -4,16 +4,10 @@
 import requests
 from sys import argv
 
-if __name__ == "__main__":
-    username, repo = argv[1], argv[2]
-    url = "https://api.github.com/repos/{}/{}/commits"
-    url = url.format(username, repo)
+if __name__ == '__main__':
+    url = "https://api.github.com/repos/{}/{}/commits".format(argv[2], argv[1])
     r = requests.get(url)
     commits = r.json()
-    try:
-        for i in range(10):
-            sha = commits[i].get("sha")
-            name = commits[i].get("commit").get("author").get("name")
-            print("{}: {}".format(sha, name))
-    except IndexError:
-        pass
+    for commit in commits[:10]:
+        print(commit.get('sha'), end=': ')
+        print(commit.get('commit').get('author').get('name'))
